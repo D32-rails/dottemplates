@@ -14,6 +14,7 @@ Download and put the file in the root of your project.
 ## Authors
 
 * [David Ker](https://github.com/snappy316)
+* [Tim Heuett](https://github.com/TimHugh)
 
 
 ## Contributing
@@ -27,4 +28,4 @@ Download and put the file in the root of your project.
 
 ## License
 
-MIT/X11.
+CC
