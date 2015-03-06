@@ -6,7 +6,8 @@ This is the standard `.rubocop.yml` file to be used for grading in the Rails DA.
 
 ## Installation
 
-Download and put the file in the root of your project.
+1. Clone this repository
+2. Run `install.rb`
 
 ## Known Issues
 
