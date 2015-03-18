@@ -1,17 +1,24 @@
 #!/usr/bin/env ruby
 
 require 'fileutils'
+require 'open-uri'
 
 file_name = ".rubocop.yml"
-file_path = File.join(File.expand_path File.dirname(__FILE__), file_name)
+src_path = "https://raw.githubusercontent.com/snappy316/rubocop-template/master/.rubocop.yml"
 dest_path = "~/"
 
-if File.exist?(File.expand_path(file_name))
+FileUtils.cd File.expand_path(dest_path)
+
+if File.exist?(file_name)
   puts "File '#{File.join(dest_path,file_name)}' already exists. Overwrite? (y/n): "
   if gets.chomp[0].downcase != 'y'
-    puts "Operation canceled."
+    puts "Install cancelled."
     exit
   end
 end
 
-FileUtils.cp(file_path, File.expand_path(dest_path))
+open(file_name, 'w') do |file|
+  file << open(src_path).read
+end
+
+puts "Rubocop config successfully installed to #{File.expand_path(dest_path, file_name)}"
