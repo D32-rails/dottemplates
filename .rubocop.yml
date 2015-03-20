@@ -19,10 +19,10 @@ AllCops:
     - '**/Rakefile'
     - '**/config.ru'
   Exclude:
-    - 'bin/**/*'
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
+    - '**/bin/**/*'
+    - '**/db/**/*'
+    - '**/config/**/*'
+    - '**/script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
 
 # Ignore the "top-level documentation" cops
