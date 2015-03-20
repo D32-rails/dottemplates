@@ -6,9 +6,13 @@ This is the standard `.rubocop.yml` file to be used for grading in the Rails DA.
 
 ## Installation
 
-Run this command in your terminal:
+If you use Bash, run this command in your terminal:
 
 ```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/snappy316/rubocop-template/master/install.rb)"```
+
+If you use Fish (or another non-Bash shell), run this command:
+
+```curl -fsSL https://raw.githubusercontent.com/snappy316/rubocop-template/master/install.rb | ruby```
 
 It will automatically fetch the latest version of the config and install it to `~/.rubocop.yml`
 
