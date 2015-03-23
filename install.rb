@@ -4,7 +4,7 @@ require 'fileutils'
 require 'open-uri'
 
 file_name = ".rubocop.yml"
-src_path = "https://raw.githubusercontent.com/snappy316/rubocop-template/master/.rubocop.yml"
+src_path = "https://raw.githubusercontent.com/D32-rails/dottemplates/master/.rubocop.yml"
 dest_path = "~/"
 
 FileUtils.cd File.expand_path(dest_path)
