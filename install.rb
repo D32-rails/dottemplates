@@ -39,6 +39,4 @@ class DotEnvInstaller
   end
 end
 
-if __FILE__ == $0
-  DotEnvInstaller.new.install
-end
+DotEnvInstaller.new.install if __FILE__ == $PROGRAM_NAME
