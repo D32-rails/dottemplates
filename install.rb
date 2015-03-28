@@ -13,20 +13,21 @@ class DotEnvInstaller
   def install
     @files_to_copy.each do |file_name|
       puts "Creating: #{File.join(@dest_path, file_name)}"
-      if File.exist?(file_name)
-        if overwrite?
-          puts " -- Overwriting old #{file_name}"
-        else
-          puts " -- Skip! File exists. To overwrite, run again with -f"
-          next
-        end
+      if write_file? file_name
+        puts " -- Overwriting old #{file_name}"
+        download_and_save(file_name)
+      else
+        puts " -- Skip! File exists. To overwrite, run again with -f"
       end
-
-      download_and_save(file_name)
     end
   end
 
   private
+
+  def write_file?(file_name)
+    return overwrite? if File.exist?(file_name)
+    true
+  end
 
   def overwrite?
     ARGV.include? "-f"
