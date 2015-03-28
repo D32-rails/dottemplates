@@ -17,7 +17,7 @@ class DotEnvInstaller
         puts " -- Overwriting old #{file_name}"
         download_and_save(file_name)
       else
-        puts " -- Skip! File exists. To overwrite, run again with -f"
+        puts " -- Skip! File exists, and overwrite is disabled"
       end
     end
   end
@@ -30,7 +30,7 @@ class DotEnvInstaller
   end
 
   def overwrite?
-    ARGV.include? "-f"
+    !ARGV.include? "-n"
   end
 
   def download_and_save(file_name)
