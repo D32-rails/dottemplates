@@ -3,22 +3,41 @@
 require 'fileutils'
 require 'open-uri'
 
-file_name = ".rubocop.yml"
-src_path = "https://raw.githubusercontent.com/D32-rails/dottemplates/master/.rubocop.yml"
-dest_path = "~/"
+class DotEnvInstaller
+  def initialize
+    @files_to_copy = [".rubocop.yml", ".hound.yml"]
+    @src_path = "https://raw.githubusercontent.com/D32-rails/dottemplates/master/"
+    @dest_path = File.expand_path File.dirname(__FILE__)
+  end
 
-FileUtils.cd File.expand_path(dest_path)
+  def install
+    @files_to_copy.each do |file_name|
+      puts "Creating: #{File.join(@dest_path, file_name)}"
+      if write_file? file_name
+        puts " -- Overwriting old #{file_name}"
+        download_and_save(file_name)
+      else
+        puts " -- Skip! File exists, and overwrite is disabled"
+      end
+    end
+  end
 
-if File.exist?(file_name)
-  puts "File '#{File.join(dest_path,file_name)}' already exists. Overwrite? (y/n): "
-  if gets.chomp[0].downcase != 'y'
-    puts "Install cancelled."
-    exit
+  private
+
+  def write_file?(file_name)
+    return overwrite? if File.exist?(file_name)
+    true
+  end
+
+  def overwrite?
+    !ARGV.include? "-n"
+  end
+
+  def download_and_save(file_name)
+    open(file_name, 'w') do |file|
+      file << open(@src_path + file_name).read
+    end
   end
 end
 
-open(file_name, 'w') do |file|
-  file << open(src_path).read
-end
-
-puts "Rubocop config successfully installed to #{File.expand_path(dest_path, file_name)}"
+DotEnvInstaller.new.install if __FILE__ == $PROGRAM_NAME

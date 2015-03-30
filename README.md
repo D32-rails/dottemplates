@@ -6,15 +6,11 @@ This is the standard `.rubocop.yml` file to be used for grading in the Rails DA.
 
 ## Installation
 
-If you use Bash, run this command in your terminal:
-
-```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/D32-rails/dottemplates/master/install.rb)"```
-
-If you use Fish (or another non-Bash shell), run this command:
+Run this command in your terminal:
 
 ```curl -fsSL https://raw.githubusercontent.com/D32-rails/dottemplates/master/install.rb | ruby```
 
-It will automatically fetch the latest version of the config and install it to `~/.rubocop.yml`
+It will automatically fetch the latest versions of the config files and install them to the current directory.
 
 ## Known Issues
 
